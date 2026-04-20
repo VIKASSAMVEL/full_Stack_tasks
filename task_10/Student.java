@@ -17,6 +17,7 @@ public class Student {
     private String email;
 
     private String department;
+    private int age;
 
     // Standard Getters/Setters
     public Long getId() { return id; }
@@ -27,4 +28,6 @@ public class Student {
     public void setEmail(String email) { this.email = email; }
     public String getDepartment() { return department; }
     public void setDepartment(String department) { this.department = department; }
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
 }

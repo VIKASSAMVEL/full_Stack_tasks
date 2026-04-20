@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Details</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background-color: #f4f7f6; }
+        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px; text-align: center; }
+        h1 { color: #333; font-size: 1.5rem; }
+        p { color: #666; margin: 10px 0; }
+        .label { font-weight: bold; color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Employee Profile</h1>
+        <hr>
+        <p><span class="label">Name:</span> <span th:text="${empName}">[Name Placeholder]</span></p>
+        <p><span class="label">Designation:</span> <span th:text="${role}">[Role Placeholder]</span></p>
+        <p>Department: Engineering</p>
+    </div>
+</body>
+</html>

@@ -16,18 +16,20 @@ INSERT INTO accounts VALUES (1, 'User A', 10000.00), (2, 'Merchant X', 5000.00);
 -- 3. Check for errors
 -- 4. COMMIT or ROLLBACK
 
+-- Scenario 1: Successful Transaction
 START TRANSACTION;
-
 UPDATE accounts SET balance = balance - 2000.00 WHERE acc_id = 1;
-
--- Simulate error check (if balance < 0 then ROLLBACK)
--- SELECT balance into @bal FROM accounts WHERE acc_id = 1;
--- IF @bal < 0 THEN ROLLBACK; ELSE
-
 UPDATE accounts SET balance = balance + 2000.00 WHERE acc_id = 2;
-
--- If all good
 COMMIT;
+SELECT 'Transaction Successful' as Status, balance FROM accounts WHERE acc_id = 1;
 
--- Verify final state
-SELECT * FROM accounts;
+-- Scenario 2: Failed Transaction (Simulation of ROLLBACK)
+-- Suppose User A tries to send 50000.00 but only has 8000.00 left
+START TRANSACTION;
+UPDATE accounts SET balance = balance - 50000.00 WHERE acc_id = 1;
+
+-- Check balance (Conceptual check in script)
+-- Since balance would go negative (-42000), we ROLLBACK
+ROLLBACK;
+
+SELECT 'Transaction Failed & Rolled Back' as Status, balance FROM accounts WHERE acc_id = 1;

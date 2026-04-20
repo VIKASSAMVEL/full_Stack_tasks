@@ -33,27 +33,40 @@
             const email = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
             
+            const userError = document.getElementById('userError');
+            const passError = document.getElementById('passError');
+            const dbError = document.getElementById('dbError');
+
             let valid = true;
             
-            // Basic Validation
+            // Basic Frontend Validation
             if (!email.includes('@')) {
-                document.getElementById('userError').style.display = 'block';
+                userError.textContent = "Please enter a valid email address.";
+                userError.style.display = 'block';
                 valid = false;
             } else {
-                document.getElementById('userError').style.display = 'none';
+                userError.style.display = 'none';
             }
             
             if (pass.length < 6) {
-                document.getElementById('passError').style.display = 'block';
+                passError.style.display = 'block';
                 valid = false;
             } else {
-                document.getElementById('passError').style.display = 'none';
+                passError.style.display = 'none';
             }
             
             if (valid) {
-                // Simulate DB check failure for demonstration
-                document.getElementById('dbError').style.display = 'block';
-                console.log("Form validated via JS. Now checking database...");
+                // Simulate Database Check logic
+                if (email === "admin@college.edu" && pass === "admin123") {
+                    dbError.style.display = 'none';
+                    alert("Login Successful! Redirecting...");
+                    console.log("Success: Database verified credentials for " + email);
+                    // location.href = "dashboard.html";
+                } else {
+                    dbError.textContent = "Database Error: Invalid username or password!";
+                    dbError.style.display = 'block';
+                    console.error("Failure: Credentials do not match database records.");
+                }
             }
         });
     </script>
