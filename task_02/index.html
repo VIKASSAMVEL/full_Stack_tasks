@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="../task_01/style.css">
+    <style>
+        .dashboard-container { width: 90%; max-width: 1000px; }
+        .controls { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f8f9fa; cursor: pointer; }
+        .stats { margin-top: 20px; background: #e9ecef; padding: 15px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container container">
+        <h1>Student Dashboard</h1>
+        
+        <div class="controls">
+            <select id="filterDept">
+                <option value="All">All Departments</option>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="MECH">MECH</option>
+            </select>
+            <button onclick="sortData('name')">Sort by Name</button>
+            <button onclick="sortData('dob')">Sort by Date</button>
+        </div>
+
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>DOB</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <div class="stats" id="statsArea"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

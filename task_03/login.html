@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login</title>
+    <link rel="stylesheet" href="../task_01/style.css">
+    <style>
+        .error-msg { color: #dc3545; font-size: 0.85rem; margin-top: 5px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Member Login</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username (Email):</label>
+                <input type="email" id="username" required placeholder="name@example.com">
+                <div id="userError" class="error-msg">Invalid email format!</div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required placeholder="Minimum 6 characters">
+                <div id="passError" class="error-msg">Password must be at least 6 characters!</div>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div id="dbError" class="error-msg" style="text-align: center; margin-top: 15px;">Invalid credentials!</div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            
+            let valid = true;
+            
+            // Basic Validation
+            if (!email.includes('@')) {
+                document.getElementById('userError').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('userError').style.display = 'none';
+            }
+            
+            if (pass.length < 6) {
+                document.getElementById('passError').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('passError').style.display = 'none';
+            }
+            
+            if (valid) {
+                // Simulate DB check failure for demonstration
+                document.getElementById('dbError').style.display = 'block';
+                console.log("Form validated via JS. Now checking database...");
+            }
+        });
+    </script>
+</body>
+</html>
